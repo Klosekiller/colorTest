@@ -41,8 +41,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    max-width: 300px;
-    margin: 0 auto;
+    width: 30%;
 }
 
 .input-field label {

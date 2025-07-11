@@ -86,11 +86,11 @@ export function registerEvents() {
     const email = 'dyates@greenvillelibrary.org';
     const subject = encodeURIComponent('Color Test - new hex codes');
 
-    const bodyLines = ['New Hex Codes for the Public Website'];
+    const bodyLines = ['New Hex Codes for the Public Website\n'];
     for (const [name, hex] of Object.entries(baseColors)) {
       bodyLines.push(`${name}: ${hex}`);
     }
-    const body = encodeURIComponent(bodyLines.join('\n\n'));
+    const body = encodeURIComponent(bodyLines.join('\n'));
 
     const mailtoLink = `mailto:${email}?subject=${subject}&body=${body}`;
     window.location.href = mailtoLink;

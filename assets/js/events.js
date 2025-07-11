@@ -90,7 +90,7 @@ export function registerEvents() {
     for (const [name, hex] of Object.entries(baseColors)) {
       bodyLines.push(`${name}: ${hex}`);
     }
-    const body = encodeURIComponent(bodyLines.join('\n'));
+    const body = encodeURIComponent(bodyLines.join('\n\n'));
 
     const mailtoLink = `mailto:${email}?subject=${subject}&body=${body}`;
     window.location.href = mailtoLink;

@@ -53,25 +53,22 @@ export function createRow(colorName, baseHex, container) {
   label.style.position = 'relative';
   label.textContent = colorName.charAt(0).toUpperCase() + colorName.slice(1);
 
-  const delBtn = document.createElement('button');
-  delBtn.textContent = '×';
-  delBtn.title = 'Delete color';
-  Object.assign(delBtn.style, {
-    position: 'absolute', right: '0', top: '0', border: 'none',
-    background: 'transparent', color: '#999', fontSize: '1.2rem',
-    cursor: 'pointer', userSelect: 'none', padding: '0 6px',
-    lineHeight: '1', fontWeight: 'bold'
-  });
+  if (colorName.toLowerCase() !== 'preview') {
+    const delBtn = document.createElement('button');
+    delBtn.textContent = '×';
+    delBtn.title = 'Delete color';
+    delBtn.className = 'btn-delete';
 
-  delBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    if (confirm(`Delete the color "${colorName}"?`)) {
-      delete baseColors[colorName];
-      renderPalette(container);
-    }
-  });
+    delBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (confirm(`Delete the color "${colorName}"?`)) {
+        delete baseColors[colorName];
+        renderPalette(container);
+      }
+    });
 
-  label.appendChild(delBtn);
+    label.appendChild(delBtn);
+  }
   row.appendChild(label);
 
   const swatches = document.createElement('div');

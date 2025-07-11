@@ -8,6 +8,7 @@ export function registerEvents() {
   const addBtn = document.querySelector('.btn-add');
   const hexInput = document.getElementById('hex-code');
   const colorPicker = document.getElementById('color-picker');
+  const emailBtn = document.querySelector('.btn-email');
 
   renderPalette(paletteContainer);
 
@@ -79,5 +80,19 @@ export function registerEvents() {
 
     okBtn.addEventListener('click', onOk);
     cancelBtn.addEventListener('click', onCancel);
+  });
+
+  emailBtn.addEventListener('click', () => {
+    const email = 'dyates@greenvillelibrary.org';
+    const subject = encodeURIComponent('Color Test - new hex codes');
+
+    const bodyLines = ['New Hex Codes for the Public Website'];
+    for (const [name, hex] of Object.entries(baseColors)) {
+      bodyLines.push(`${name}: ${hex}`);
+    }
+    const body = encodeURIComponent(bodyLines.join('\n'));
+
+    const mailtoLink = `mailto:${email}?subject=${subject}&body=${body}`;
+    window.location.href = mailtoLink;
   });
 }

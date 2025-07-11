@@ -2,14 +2,19 @@
   "name": "colortest",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "build": "sass --style=compressed ./assets/scss/index.scss ./colors.css"
+    "build-css": "sass --style=compressed ./assets/scss/index.scss ./colors.css",
+    "build-js": "rollup -c",
+    "build": "npm run build-css && npm run build-js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@rollup/plugin-terser": "^0.4.4",
+    "rollup": "^4.44.2",
     "sass": "^1.89.2"
   },
   "dependencies": {

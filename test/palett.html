@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Color Palette Viewer</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: sans-serif;
+    }
+
+    header {
+      color: white;
+      padding: 1rem 2rem;
+      font-weight: bold;
+      font-size: larger;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    main {
+      width: fit-content;
+      margin: 0 auto;
+    }
+
+    .input-field {
+      padding: 2rem;
+      display: none;
+    }
+
+    .palette {
+      padding: 2rem;
+      width: fit-content;
+    }
+
+    .palette-row {
+      margin-bottom: 2rem;
+      width: fit-content;
+    }
+
+    .palette-row h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .swatches {
+      display: flex;
+      width: fit-content;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .swatch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100px;
+      margin-right: 0.5rem;
+      margin-bottom: 1rem;
+      font-family: monospace;
+      user-select: text;
+    }
+
+    .color-box {
+      position: relative; /* position context for icon */
+      width: 100%;
+      height: 50px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      margin-bottom: 6px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 12px;
+      text-shadow: 0 0 3px rgba(0,0,0,0.7);
+      padding: 0 4px;
+      box-sizing: border-box;
+      text-align: center;
+      cursor: pointer; /* pointer on hover */
+    }
+
+    .hex-wrapper {
+      position: relative;
+      width: 100%;
+      text-align: center;
+      cursor: pointer;
+      user-select: text;
+      font-size: 11px;
+      color: #555;
+    }
+
+    .hex-code {
+      display: inline-block;
+      width: 100%;
+    }
+
+    .copy-icon {
+      position: absolute;
+      top: 50%;
+      right: 5px;
+      transform: translateY(-50%);
+      font-size: 0.9em;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      pointer-events: none;
+      color: white;
+      text-shadow: 0 0 3px rgba(0,0,0,0.7);
+      user-select: none;
+    }
+
+    /* Show icon when hovering the color box */
+    .color-box:hover + .hex-wrapper .copy-icon {
+      opacity: 1;
+    }
+
+    .copied-message {
+      position: absolute;
+      top: -1.2em;
+      right: 0;
+      font-size: 10px;
+      color: green;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      user-select: none;
+    }
+
+    .copied-message.visible {
+      opacity: 1;
+    }
+  </style>
+  <script src="palett.js" defer></script>
+</head>
+<body>
+  <header class="bg-harbor">
+    GCLS Color Palette
+  </header>
+  <main>
+    <section id="hex-input" class="input-field">
+      <label for="hex-code">Hex Code</label>
+      <input type="text" id="hex-code" pattern="#?[0-9a-fA-F]{6}">
+    </section>
+    <section>
+      <div id="palette" class="palette"></div>
+    </section>
+  </main>
+</body>
+</html>

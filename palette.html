@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Color Palette Viewer</title>
+  <link rel="stylesheet" href="./colors.css" />
+  <link rel="stylesheet" href="./styles.css">
+  <script src="palette.js" defer></script>
+</head>
+<body>
+  <header class="bg-harbor">
+    GCLS Color Palette
+  </header>
+  <main>
+    <section class="input-wrapper">
+      <div class="input-field" id="hex-input">
+        <label for="hex-code">Color Picker</label>
+        <input type="color" id="color-picker" />
+      </div>
+      <div class="input-field" id="hex-input">
+        <label for="hex-code">Hex Code</label>
+        <input type="text" id="hex-code" pattern="#?[0-9a-fA-F]{6}">
+        <div class="btn-wrapper">
+          <div class="btn btn-check">Check</div>
+          <div class="btn btn-add">Add</div>
+        </div>
+      </div>
+      <div class="input-field d-none" id="percentage-input">
+        <label for="percentage">Add New Percentage</label>
+        <input type="text" id="percentage">
+        <div class="radio-wrapper">
+          <label><input type="radio" name="lightness" value="Tint"> Tint</label>
+          <label><input type="radio" name="lightness" value="Shade"> Shade</label>
+        </div>
+        <div class="btn-wrapper">
+          <div class="btn btn-add">Add</div>
+          <div class="btn btn-remove">Remove</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="color-checker" class="palette">
+
+    </section>
+
+    <hr>
+
+    <section>
+      <div id="palette" class="palette"></div>
+    </section>
+  </main>
+</body>
+</html>

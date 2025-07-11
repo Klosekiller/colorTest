@@ -1,0 +1,75 @@
+@use "sass:color";
+@use "sass:map";
+@use "sass:string";
+
+$base-colors: (
+  tangerine: #fbaf45,
+  orchid: #bf4097,
+  harbor: #0d84c7,
+  pool: #42c4dd,
+  admiral: #4d4c68,
+  lime: #c0d730,
+  gray: #4d4d4d
+);
+
+$tint-percentages: (10%, 25%, 50%, 75%);
+$shade-percentages: (10%, 25%, 50%, 75%);
+
+@function generate-tints($color, $percentages) {
+  $result: ();
+  @each $pct in $percentages {
+    $tint-color: color.mix($color, white, $pct);
+    $result: map.merge($result, (
+      $pct: $tint-color
+    ));
+  }
+  @return $result;
+}
+
+@function generate-shades($color, $percentages) {
+  $result: ();
+  @each $pct in $percentages {
+    $shade-color: color.mix($color, black, 100% - $pct);
+    $result: map.merge($result, (
+      $pct: $shade-color
+    ));
+  }
+  @return $result;
+}
+
+$all-colors: ();
+
+@each $name, $color in $base-colors {
+  $tints: generate-tints($color, $tint-percentages);
+  $shades: generate-shades($color, $shade-percentages);
+
+  $all-colors: map.merge($all-colors, (
+    $name: (
+      base: $color,
+      tints: $tints,
+      shades: $shades
+    )
+  ));
+}
+
+@function get-color($name, $pct, $type) {
+  @return map.get(map.get(map.get($all-colors, $name), $type), $pct);
+}
+
+@each $color-name, $variants in $all-colors {
+  @each $type, $map in $variants {
+    $is-base: $type == base;
+    $type-singular: if($type == "tints", "tint", if($type == "shades", "shade", null));
+    $entries: if($is-base, (null: $map), $map);
+
+    @each $pct, $color in $entries {
+      $pct-str: if($pct != null, string.slice($pct + "", 1, -2), "");
+      $suffix: if($is-base, "", "-#{$type-singular}-#{$pct-str}");
+      $class-name: ".bg-#{$color-name}#{$suffix}";
+
+      #{$class-name} {
+        background-color: $color;
+      }
+    }
+  }
+}

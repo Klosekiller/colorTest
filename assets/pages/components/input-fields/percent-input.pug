@@ -1,0 +1,13 @@
+.input-field.d-none#percentage-input
+    label(for="percentage") Add New Percentage
+    input(type="text" id="percentage")
+    .radio-wrapper
+        label
+            input(type="radio" name="lightness" value="Tint")
+            | Tint
+        label
+            input(type="radio" name="lightness" value="Shade")
+            | Shade
+    .btn-wrapper
+        .btn.btn-add Add
+        .btn.btn-remove Remove

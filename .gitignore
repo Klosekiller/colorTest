@@ -2,3 +2,4 @@ node_modules
 rollup*
 .vscode/
 .rollup*
+docs/test

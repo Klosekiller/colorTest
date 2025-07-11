@@ -4,9 +4,14 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "build-css": "sass --style=compressed ./assets/scss/index.scss ./colors.css",
+    "build-html": "pug assets/pages/index.pug -o docs/ --pretty",
+    "build-css": "sass --style=compressed ./assets/scss/index.scss ./docs/colors.css",
     "build-js": "rollup -c",
-    "build": "npm run build-css && npm run build-js"
+    "build": "npm run build-css && npm run build-js && npm run build-html",
+    "build-html-test": "pug assets/pages/index.pug -o docs/test/ --pretty",
+    "build-css-test": "sass --style=compressed ./assets/scss/index.scss ./docs/test/colors.css",
+    "build-js-test": "cross-env BUILD_TARGET=test rollup -c",
+    "build-test": "npm run build-css-test && npm run build-js-test && npm run build-html-test"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +19,8 @@
   "description": "",
   "devDependencies": {
     "@rollup/plugin-terser": "^0.4.4",
+    "cross-env": "^7.0.3",
+    "pug-cli": "^1.0.0-alpha6",
     "rollup": "^4.44.2",
     "sass": "^1.89.2"
   },

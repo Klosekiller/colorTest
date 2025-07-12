@@ -1,0 +1,17 @@
+.palette {
+    padding: 2rem;
+    width: fit-content;
+
+    &-row {
+        margin-bottom: 2rem;
+        width: fit-content;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        h3 {
+            margin-bottom: 0.5rem;
+        }
+    }
+}

@@ -1,0 +1,18 @@
+.hex {
+
+    &-wrapper {
+        position: relative;
+        width: 100%;
+        text-align: center;
+        cursor: pointer;
+        user-select: text;
+        font-size: 11px;
+        color: #555;
+    }
+
+    &-code {
+        display: inline-block;
+        width: 100%;
+    }
+}
+

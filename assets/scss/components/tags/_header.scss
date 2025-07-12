@@ -1,0 +1,12 @@
+header {
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: larger;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}

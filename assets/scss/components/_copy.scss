@@ -1,0 +1,33 @@
+.cop {
+
+    &y-icon {
+        position: absolute;
+        top: 50%;
+        right: 5px;
+        transform: translateY(-50%);
+        font-size: 0.9em;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+        pointer-events: none;
+        color: white;
+        text-shadow: 0 0 3px rgba(0,0,0,0.7);
+        user-select: none;
+    }
+
+    &ied-message {
+        position: absolute;
+        top: -1.2em;
+        right: 0;
+        font-size: 10px;
+        color: green;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        user-select: none;
+
+        &.visible{
+            opacity: 1;
+        }
+    }
+
+
+}

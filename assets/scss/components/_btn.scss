@@ -1,0 +1,64 @@
+.btn {
+    text-align: center;
+    padding: 0.5rem;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s ease;
+    width: 100%;
+
+    &-check {
+        background-color: #bf4097;
+
+        &:hover {
+            background-color: #8f3071;
+        }
+    }
+
+    &-add {
+        background-color: #0d84c7;
+
+        &:hover {
+            background-color: #0a6395;
+        }
+    }
+
+    &-remove {
+        background-color: #ff0000;
+
+        &:hover {
+            background-color: #bf0000;
+        }
+    }
+
+    &-email {
+        width: fit-content;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &-delete {
+        position: absolute;
+        right: 0;
+        top: 0;
+        border: none;
+        background: transparent;
+        color: #999;
+        font-size: 1.2rem;
+        cursor: pointer;
+        user-select: none;
+        padding: 0 6px;
+        line-height: 1;
+        font-weight: bold;
+    }
+
+    &-wrapper {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;    
+    }
+}
